@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داستان قرض فراموش شده - روزنامچه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A148C; --secondary-color: #00BFA5;
+            --light-bg: #fdfcff; --dark-text: #333;
+            --danger-color: #dc3545; --success-color: #28a745;
+        }
+        body {
+            font-family: 'Vazirmatn', sans-serif; background-color: var(--light-bg);
+            margin: 0; padding: 20px; line-height: 1.9; font-size: 1.2rem;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+        .story-container {
+            max-width: 500px; text-align: center;
+        }
+        .story-text {
+            opacity: 0; animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        h1 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; }
+        p { margin: 15px 0; }
+        .highlight { color: var(--danger-color); font-weight: 700; }
+        .solution-box {
+            background-color: #fff; padding: 25px; border-radius: 16px;
+            margin-top: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            opacity: 0; transform: translateY(30px);
+            animation: slideIn 1s forwards 1.5s;
+        }
+        @keyframes slideIn { to { opacity: 1; transform: translateY(0); } }
+        .solution-box h2 {
+            margin: 0 0 15px 0; font-size: 1.5rem; color: var(--dark-text);
+        }
+        .magic-button {
+            background: linear-gradient(45deg, var(--secondary-color), #009688);
+            color: white; border: none; padding: 18px 35px; border-radius: 50px;
+            font-size: 1.4rem; font-weight: 700; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(0, 191, 165, 0.4);
+        }
+        .magic-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 191, 165, 0.6);
+        }
+        .result {
+            margin-top: 20px; font-weight: 700; font-size: 1.8rem;
+            color: var(--success-color); transition: opacity 0.5s;
+            height: 0; opacity: 0;
+        }
+        .result.show { height: auto; opacity: 1; }
+        .final-cta {
+            margin-top: 40px; opacity: 0; animation: fadeIn 1s forwards 2.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="story-container">
+        <div class="story-text">
+            <h1>داستان قرض فراموش شده</h1>
+            <p>احمد یک دکاندار زحمتکش است. هفته گذشته، مشتری همیشگی اش، محمود، <span class="highlight">۵ قلم جنس مختلف به ارزش مجموعی ۷,۵۰۰ افغانی</span> به قرض برد.</p>
+            <p>امروز محمود آمد و <span class="highlight">۳,۰۰۰ افغانی</span> پرداخت کرد.</p>
+            <p>حالا احمد گیج شده. حساب باقی مانده محمود چند است؟ آیا باید تمام کتابچه اش را ورق بزند؟</p>
+        </div>
+
+        <div class="solution-box">
+            <h2>با روزنامچه، جواب فقط یک کلیک فاصله دارد.</h2>
+            <button class="magic-button" id="solve-button">حساب باقی مانده محمود را نشان بده</button>
+            <div class="result" id="result-box">
+                <p>۴,۵۰۰ افغانی</p>
+            </div>
+        </div>
+
+        <div class="final-cta">
+            <p>حسابات تانرا مانند یک قهرمان مدیریت کنید.</p>
+            <a href="YOUR_DOWNLOAD_LINK.apk" class="magic-button" style="font-size: 1.2rem; background: var(--primary-color);">دانلود روزنامچه</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('solve-button').addEventListener('click', function() {
+            const resultBox = document.getElementById('result-box');
+            resultBox.classList.add('show');
+            this.style.display = 'none'; // Hide the button after click
+        });
+    </script>
+</body>
+</html>
