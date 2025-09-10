@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داستان های روزنامچه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A148C; --secondary-color: #00BFA5;
+            --light-bg: #f4f6f9; --dark-text: #2f2f2f;
+            --danger-color: #dc3545; --success-color: #28a745;
+            --border-color: #e0e0e0;
+        }
+        body {
+            font-family: 'Vazirmatn', sans-serif; background-color: var(--light-bg);
+            margin: 0; padding: 20px; line-height: 1.9; color: var(--dark-text);
+        }
+        .storybook-container {
+            max-width: 800px; margin: 20px auto;
+            display: flex; gap: 30px; align-items: flex-start;
+        }
+        @media (max-width: 768px) { .storybook-container { flex-direction: column; } }
+
+        .story-nav {
+            flex: 1; min-width: 250px;
+            background-color: #fff; padding: 20px;
+            border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+        .story-nav h2 {
+            margin: 0 0 15px 0; font-size: 1.5rem; color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color); padding-bottom: 10px;
+        }
+        .story-nav ul { list-style: none; padding: 0; margin: 0; }
+        .story-nav li {
+            padding: 12px; margin-bottom: 8px; border-radius: 8px;
+            cursor: pointer; transition: background-color 0.2s, color 0.2s;
+            font-weight: 500;
+        }
+        .story-nav li:hover { background-color: #f0e6f6; }
+        .story-nav li.active {
+            background-color: var(--primary-color); color: white;
+            font-weight: 700;
+        }
+        .story-nav li.coming-soon { color: #aaa; cursor: not-allowed; }
+
+        .story-content {
+            flex: 2; background-color: #fff;
+            padding: 40px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .story { display: none; }
+        .story.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .story h1 { font-size: 2.2rem; color: var(--primary-color); text-align: center; margin-bottom: 25px; }
+        .story p { font-size: 1.15rem; margin: 15px 0; }
+        .highlight { color: var(--danger-color); font-weight: 700; }
+        .solution-box {
+            border: 2px dashed var(--border-color); padding: 25px;
+            border-radius: 12px; margin-top: 30px; text-align: center;
+        }
+        .solution-box h3 {
+            margin: 0 0 15px 0; font-size: 1.3rem; color: var(--dark-text);
+        }
+        .magic-button {
+            background: linear-gradient(45deg, var(--secondary-color), #009688);
+            color: white; border: none; padding: 15px 30px; border-radius: 50px;
+            font-size: 1.2rem; font-weight: 700; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(0, 191, 165, 0.4);
+        }
+        .magic-button:hover {
+            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 191, 165, 0.5);
+        }
+        .result {
+            margin-top: 20px; font-weight: 800; font-size: 2.5rem;
+            color: var(--success-color); transition: opacity 0.5s;
+            height: 0; opacity: 0;
+        }
+        .result.show { height: auto; opacity: 1; }
+
+        .final-cta {
+            text-align: center; margin-top: 40px; padding-top: 30px;
+            border-top: 2px solid var(--border-color);
+        }
+        .final-cta p { font-weight: 500; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+<div class="storybook-container">
+    <nav class="story-nav">
+        <h2>داستان های روزنامچه</h2>
+        <ul>
+            <li class="active" data-story="story1">داستان قرض فراموش شده</li>
+            <li data-story="story2">داستان جنس گُم شده</li>
+            <li data-story="story3">داستان فروشات کم</li>
+            <li class="coming-soon">داستان پول نقد (به زودی...)</li>
+        </ul>
+    </nav>
+
+    <main class="story-content">
+        <!-- Story 1: The Forgotten Debt -->
+        <div id="story1" class="story active">
+            <h1>داستان قرض فراموش شده</h1>
+            <p>احمد یک دکاندار زحمتکش است. هفته گذشته، مشتری همیشگی اش، محمود، <span class="highlight">چندین جنس به ارزش مجموعی ۷,۵۰۰ افغانی</span> به قرض برد.</p>
+            <p>امروز محمود آمد و <span class="highlight">۳,۰۰۰ افغانی</span> پرداخت کرد.</p>
+            <p>حالا احمد گیج شده. حساب باقی مانده محمود چند است؟ آیا باید تمام کتابچه اش را ورق بزند تا حسابات قبلی را پیدا کند؟</p>
+            <div class="solution-box">
+                <h3>با روزنامچه، جواب فقط یک کلیک فاصله دارد.</h3>
+                <button class="magic-button" data-result="۴,۵۰۰ افغانی">حساب باقی مانده محمود را نشان بده</button>
+                <div class="result"><p></p></div>
+            </div>
+        </div>
+
+        <!-- Story 2: The Missing Item -->
+        <div id="story2" class="story">
+            <h1>داستان جنس گُم شده</h1>
+            <p>امروز روز شلوغی برای احمد بود. آخر روز، وقتی پول دخل را حساب کرد، دید که <span class="highlight">۵۰۰ افغانی</span> از حساب کتاب اپلیکیشن زیادتر است.</p>
+            <p>او مطمین است که اشتباه نکرده، پس حتماً یک فروش را فراموش کرده که در اپلیکیشن ثبت کند. اما کدام فروش؟</p>
+            <div class="solution-box">
+                <h3>روزنامچه با هوش مصنوعی به شما کمک میکند.</h3>
+                <button class="magic-button" data-result="فروش ۲ بکس نوشابه؟">معامله فراموش شده را پیدا کن</button>
+                <div class="result"><p></p></div>
+            </div>
+        </div>
+        
+        <!-- Story 3: The Slow Sales -->
+        <div id="story3" class="story">
+            <h1>داستان فروشات کم</h1>
+            <p>احمد در گدام خود <span class="highlight">بسته های کلان بسکیت خارجی</span> دارد که از چند ماه به این طرف فروش نرفته و سرمایه اش را منجمد کرده است.</p>
+            <p>او نمیداند که کدام جنس هایش پرفروش است و کدام یک بی فایده در گدام مانده است.</p>
+            <div class="solution-box">
+                <h3>روزنامچه با گزارشات هوشمند راه را نشان میدهد.</h3>
+                <button class="magic-button" data-result="۱. کتاب ۲. نوشابه">پرفروش ترین اجناس را نشان بده</button>
+                <div class="result"><p></p></div>
+            </div>
+        </div>
+
+        <div class="final-cta">
+            <p>حسابات تانرا مانند یک قهرمان مدیریت کنید.</p>
+            <a href="https://github.com/MLd10Sar/Esmat/releases/download/v1.0.0/app-release.apk" class="magic-button" style="font-size: 1.1rem; background: var(--primary-color);">دانلود نسخه کامل روزنامچه</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const storyLinks = document.querySelectorAll('.story-nav li[data-story]');
+        const stories = document.querySelectorAll('.story-content .story');
+        const magicButtons = document.querySelectorAll('.magic-button');
+
+        // Function to switch stories
+        function showStory(storyId) {
+            // Update nav links
+            storyLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.story === storyId);
+            });
+            // Show the correct story content
+            stories.forEach(story => {
+                story.classList.toggle('active', story.id === storyId);
+            });
+        }
+
+        // Add click listeners to nav links
+        storyLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (!this.classList.contains('coming-soon')) {
+                    showStory(this.dataset.story);
+                }
+            });
+        });
+
+        // Add click listeners to the magic buttons
+        magicButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.hasAttribute('data-result')) {
+                    e.preventDefault();
+                    const resultBox = this.nextElementSibling;
+                    const resultText = this.getAttribute('data-result');
+                    
+                    resultBox.querySelector('p').textContent = resultText;
+                    resultBox.classList.add('show');
+                    this.style.display = 'none';
+                }
+            });
+        });
+
+        // Show the first story by default
+        showStory('story1');
+    });
+</script>
+</body>
+</html>
